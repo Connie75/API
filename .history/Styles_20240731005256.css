@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e5f5; /* Lila claro */
+    color: #4a148c; /* Morado oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container {
+    background-color: #ffffff; /* Blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+h2 {
+    color: #6a1b9a; /* Morado medio */
+}
+form {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d1c4e9; /* Lila claro */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #8e24aa; /* Morado */
+    color: #ffffff; /* Blanco */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+input[type="submit"]:hover {
+    background-color: #6a1b9a; /* Morado medio */
+}
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+.password-hint {
+    font-size: 0.8em;
+    color: #7e57c2; /* Lila oscuro */
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+        padding: 8px;
+    }
+    input[type="submit"] {
+        padding: 8px;
+    }
+}

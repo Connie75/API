@@ -1,0 +1,89 @@
+### Descripción del Proyecto API de Autenticación de Usuarios
+
+#### **Título: Sistema de Autenticación de Usuarios para Registro e Inicio de Sesión**
+
+#### **Objetivo:**
+Desarrollar un servicio web (API) que permita a los usuarios registrarse y autenticar su inicio de sesión de manera segura, con opciones de roles de usuario (Administrador y Empleado). El sistema incluye validaciones de contraseñas en tiempo real y proporciona retroalimentación inmediata a los usuarios sobre los requisitos de las contraseñas.
+
+---
+
+### **Detalles Técnicos**
+
+#### **1. Tecnología Utilizada:**
+- **Backend:** PHP
+- **Base de Datos:** MySQL
+- **Servidor Web:** Apache (utilizando XAMPP)
+- **Frontend:** HTML, CSS, JavaScript
+
+#### **2. Funcionalidades del Sistema:**
+- **Registro de Usuario:**
+  - Recibe el nombre de usuario, contraseña y rol (Administrador o Empleado).
+  - Valida la contraseña para asegurar que cumpla con los requisitos de seguridad.
+  - Almacena la información del usuario en la base de datos con la contraseña encriptada.
+- **Inicio de Sesión:**
+  - Recibe el nombre de usuario y la contraseña.
+  - Verifica las credenciales contra la base de datos.
+  - Proporciona un mensaje de autenticación exitosa o error en la autenticación.
+
+#### **3. Componentes del Sistema:**
+
+**Frontend:**
+
+1. **Formulario de Registro (HTML y CSS):**
+   - Campos: Nombre de usuario, Contraseña, Rol (Seleccionar entre Administrador y Empleado).
+   - Validación en tiempo real de la contraseña utilizando JavaScript.
+   - Estilos responsivos para asegurar una buena experiencia de usuario en dispositivos móviles.
+
+2. **Formulario de Inicio de Sesión (HTML y CSS):**
+   - Campos: Nombre de usuario, Contraseña.
+   - Estilos responsivos para asegurar una buena experiencia de usuario en dispositivos móviles.
+
+**Backend:**
+
+1. **Archivo de Configuración (`config.php`):**
+   - Configuración de la conexión a la base de datos.
+   - Uso de PDO para una interacción segura con la base de datos.
+
+2. **Script de Registro (`register.php`):**
+   - Procesa los datos enviados desde el formulario de registro.
+   - Valida la contraseña para asegurar que cumple con los requisitos (mínimo 8 caracteres, incluyendo una letra mayúscula, una minúscula y un número).
+   - Encripta la contraseña utilizando `password_hash`.
+   - Inserta el nuevo usuario en la base de datos.
+
+3. **Script de Inicio de Sesión (`login.php`):**
+   - Procesa los datos enviados desde el formulario de inicio de sesión.
+   - Verifica que el nombre de usuario exista en la base de datos.
+   - Valida la contraseña utilizando `password_verify`.
+   - Proporciona retroalimentación sobre el éxito o fracaso de la autenticación.
+
+**Base de Datos:**
+
+1. **Estructura de la Base de Datos:**
+   ```sql
+   CREATE DATABASE user_authentication;
+
+   USE user_authentication;
+
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(50) NOT NULL UNIQUE,
+       password VARCHAR(255) NOT NULL,
+       role ENUM('employee', 'admin') NOT NULL
+   );
+   ```
+
+#### **4. Detalles de Implementación:**
+
+1. **Diseño Responsivo:**
+   - Uso de CSS Media Queries para ajustar el diseño según el tamaño de la pantalla del dispositivo.
+   - Ajuste de padding y tamaños de fuente para una mejor visualización en móviles.
+
+2. **Validación de Contraseñas en Tiempo Real:**
+   - Implementación de JavaScript para mostrar los requisitos de la contraseña mientras el usuario escribe.
+   - Retroalimentación inmediata sobre el cumplimiento de los requisitos.
+
+3. **Seguridad:**
+   - Encriptación de contraseñas utilizando `password_hash` en el registro.
+   - Verificación de contraseñas utilizando `password_verify` en el inicio de sesión.
+   - Uso de consultas preparadas con PDO para prevenir inyecciones SQL.
+
